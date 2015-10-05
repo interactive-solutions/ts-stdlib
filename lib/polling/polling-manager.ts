@@ -14,12 +14,12 @@ module is.stdlib {
       this.polls = {};
     }
 
-    add(name: string, callback: () => void, timeOut: number): void {
+    add(name: string, callback: (...args: any[]) => void, timeOut: number, ...args: any[]): void {
       if (this.polls[name] !== undefined) {
          throw new PollNameExists();
       }
 
-      this.polls[name] = setInterval(callback, timeOut);
+      this.polls[name] = setInterval(callback, timeOut, args);
     }
 
     remove(name: string): void {
