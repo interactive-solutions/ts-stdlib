@@ -5,7 +5,7 @@
 
 module is.stdlib {
 
-  export class PollAliasExists extends Error {}
+  export class PollNameExists extends Error {}
 
   export class PollingManager {
     private polls: {[key:string]: number};
@@ -14,19 +14,19 @@ module is.stdlib {
       this.polls = {};
     }
 
-    add(alias: string, callback: () => void, timeOut: number): void {
-      if (this.polls[alias] !== undefined) {
-         throw new PollAliasExists();
+    add(name: string, callback: () => void, timeOut: number): void {
+      if (this.polls[name] !== undefined) {
+         throw new PollNameExists();
       }
 
-      this.polls[alias] = setInterval(callback, timeOut);
+      this.polls[name] = setInterval(callback, timeOut);
     }
 
-    remove(alias: string): void {
-      if (this.polls[alias] !== undefined) {
-        clearInterval(this.polls[alias]);
+    remove(name: string): void {
+      if (this.polls[name] !== undefined) {
+        clearInterval(this.polls[name]);
 
-        this.polls[alias] = undefined;
+        this.polls[name] = undefined;
       }
     }
   }
