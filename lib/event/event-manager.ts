@@ -4,6 +4,7 @@
  */
 
 module is.stdlib {
+
   export class EventManager {
 
     private events:{[key:string]:((args?:any) => void)[]};
@@ -12,7 +13,7 @@ module is.stdlib {
       this.events = {};
     }
 
-    attach(event:string, callback:(args?:any) => void) {
+    attach(event:string, callback:(args?:any) => void): void {
 
       if (this.events[event] === undefined) {
         this.events[event] = [];
@@ -21,7 +22,7 @@ module is.stdlib {
       this.events[event].push(callback);
     }
 
-    emit(event:string, args:any) {
+    emit(event:string, args:any): void {
       _.forEach(this.events[event], (cb:(args?:any) => void) => {
         cb(args);
       });
