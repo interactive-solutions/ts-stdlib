@@ -22,7 +22,7 @@ module is.stdlib {
     }
 
     emit(event:string, args:any) {
-      angular.forEach(this.events[event], (cb:(args?:any) => void) => {
+      _.forEach(this.events[event], (cb:(args?:any) => void) => {
         cb(args);
       });
     }
