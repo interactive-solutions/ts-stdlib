@@ -12,7 +12,7 @@ module is.stdlib {
       var queryString: string = obj ? Object.keys(obj).sort().map(function (key) {
         var val = obj[key];
 
-        if (val === '') {
+        if (val === '' || val === undefined) {
           return;
         }
 
