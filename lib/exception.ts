@@ -6,4 +6,5 @@ module is.stdlib {
 
     constructor(message?: string);
   }
+
 }

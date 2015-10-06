@@ -32,12 +32,13 @@ module is.stdlib {
   /**
    * Error that is thrown if a poll with a given name already exists
    */
-  export class PollNameExists extends Error {}
+  export class PollNameExists {}
 
   /**
    * Wrapper for set/clear interval functions
    */
-  export class PollingManager {
+  export class PollingManager implements PollingManagerInterface
+  {
     private polls: {[key:string]: number};
 
     constructor() {
