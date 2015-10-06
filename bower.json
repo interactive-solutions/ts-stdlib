@@ -1,5 +1,5 @@
 {
-  "name": "is/ts-stdlib",
+  "name": "interactivesolutions/ts-stdlib",
   "version": "0.0.1",
   "dependencies": {
     "lodash": "~3.10.1"

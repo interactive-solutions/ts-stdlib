@@ -5,8 +5,17 @@
 
 module is.stdlib {
 
+  /**
+   * Utility query string class
+   */
   export class QueryString {
 
+    /**
+     * Creates a query string from an object
+     *
+     * @param obj
+     * @returns {string}
+     */
     public static stringify(obj:any) {
 
       var queryString: string = obj ? Object.keys(obj).sort().map(function (key) {

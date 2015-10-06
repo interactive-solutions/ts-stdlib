@@ -5,6 +5,30 @@
 
 module is.stdlib {
 
+  /**
+   * Interface for the event manager
+   */
+  export interface EventManagerInterface {
+    /**
+     * Attaches a callback to a given event
+     *
+     * @param event
+     * @param callback
+     */
+    attach(event:string, callback:(args?:any) => void): void;
+
+    /**
+     * Emits a given event
+     *
+     * @param event
+     * @param args
+     */
+    emit(event:string, args:any): void
+  }
+
+  /**
+   * Event manager
+   */
   export class EventManager {
 
     private events:{[key:string]:((args?:any) => void)[]};
