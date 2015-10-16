@@ -17,7 +17,13 @@ import EventManager = is.stdlib.EventManager;
 var eventManager: EventManger = new EventManager();
 
 // Bind a callback to event 'event-name'
-eventManager.attach('event-name', <callback>);
+var id: number = eventManager.attach('event-name', <callback>);
+
+// Detach callback associated with id from event 'event-name'
+eventManager.detach('event-name', id);
+
+// Bind a callback to the next emit of event 'event-name'
+eventManager.once('event-name', <callback>);
 
 // Emit an event, all callbacks attached to 'event-name' will now run
 eventManager.emit('event-name', <args?>);
