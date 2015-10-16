@@ -47,7 +47,7 @@ module is.stdlib {
 
     add(name: string, callback: (...args: any[]) => void, timeOut: number, ...args: any[]): void {
       if (this.polls[name] !== undefined) {
-         throw new PollNameExists();
+        throw new PollNameExists();
       }
 
       this.polls[name] = setInterval(callback, timeOut, args);
