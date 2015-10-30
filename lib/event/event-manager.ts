@@ -124,7 +124,7 @@ module is.stdlib {
       this.events[event].splice(index, 1);
     }
 
-    emit(event: string, args: any) {
+    emit(event: string, ...args: any[]) {
       _.forEach(this.events[event], (callback: Callback) => {
         callback.callback(args);
 
