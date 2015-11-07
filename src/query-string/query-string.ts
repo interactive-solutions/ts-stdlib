@@ -45,7 +45,7 @@ module is.stdlib {
       return queryString;
     }
 
-    public static parse():string|boolean {
+    public static parse(): string|boolean {
       var queryString: any = {};
       var href: string = window.location.href;
 

@@ -1,7 +1,8 @@
 {
   "name": "interactivesolutions/ts-stdlib",
-  "version": "0.0.1",
-  "dependencies": {
-    "lodash": "~3.10.1"
+  "version": "1.0.0",
+  "main": "stdlib.release.js",
+  "typescript": {
+    "definition": "stdlib.d.ts"
   }
 }

@@ -9,6 +9,7 @@ module is.stdlib {
    * Interface for the event manager
    */
   export interface EventManagerInterface {
+
     /**
      * Attaches a callback to a given event
      *
@@ -43,7 +44,7 @@ module is.stdlib {
      * @param event
      * @param args
      */
-    emit(event:string, args:any): void;
+    emit(event: string, args: any): void;
   }
 
   /**
@@ -78,11 +79,7 @@ module is.stdlib {
    */
   export class EventManager {
     private counter: number  = 0;
-    private events: {[key:string]: Callback[]};
-
-    constructor() {
-      this.events = {};
-    }
+    private events: {[key: string]: {[key: number]: Callback}} = {};
 
     attach(event: string, callback: (...args: any[]) => void): number {
 
@@ -92,7 +89,7 @@ module is.stdlib {
 
       var id: number = this.counter;
 
-      this.events[event].push(new Callback(id, callback, CallbackType.CONTINUOUS));
+      this.events[event][id] = new Callback(id, callback, CallbackType.CONTINUOUS);
 
       // If everything worked without errors, increment counter
       this.counter++;
@@ -108,7 +105,7 @@ module is.stdlib {
 
       var id: number = this.counter;
 
-      this.events[event].push(new Callback(id, callback, CallbackType.ONCE));
+      this.events[event][id] = new Callback(id, callback, CallbackType.ONCE);
 
       // If everything worked without errors, increment counter
       this.counter++;
@@ -117,21 +114,26 @@ module is.stdlib {
     }
 
     detach(event: string, id: number): void {
-      var index: number = _.findIndex(this.events[event], (callback: Callback) => {
-        return callback.id === id;
-      });
-
-      this.events[event].splice(index, 1);
+      delete this.events[event][id];
     }
 
     emit(event: string, ...args: any[]) {
-      _.forEach(this.events[event], (callback: Callback) => {
-        callback.callback(args);
+
+      var callbacks: {[key: number]: Callback} = this.events[event];
+
+      for (var id in callbacks) {
+        if (!callbacks.hasOwnProperty(id)) {
+          continue;
+        }
+
+        var callback = callbacks[id];
+
+        callback.callback(...args);
 
         if (callback.type === CallbackType.ONCE) {
           this.detach(event, callback.id);
         }
-      });
+      }
     }
   }
 }

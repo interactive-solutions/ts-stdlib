@@ -9,6 +9,7 @@ module is.stdlib {
    * Interface for the polling manager
    */
   export interface PollingManagerInterface {
+
     /**
      * Adds a named poll
      *
