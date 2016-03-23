@@ -1,0 +1,19 @@
+{
+  "name": "interactivesolutions-ts-stdlib",
+  "version": "0.0.0",
+  "author": {
+    "name": "Erik Norgren",
+    "email": "enorgren90@gmail.com"
+  },
+  "main": "stdlib.js",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-shell": "^0.5.2",
+    "gulp-tsc": "^1.1.5",
+    "run-sequence": "^1.1.5",
+    "typescript": "^1.8.9"
+  },
+  "scripts": {
+    "install": "gulp compile:typescript"
+  }
+}

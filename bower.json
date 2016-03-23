@@ -1,7 +1,7 @@
 {
   "name": "interactivesolutions-ts-stdlib",
-  "version": "1.0.1",
-  "main": "stdlib.release.js",
+  "version": "1.0.2",
+  "main": "stdlib.js",
   "typescript": {
     "definition": "stdlib.d.ts"
   }
